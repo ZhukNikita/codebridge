@@ -1,0 +1,27 @@
+@mixin font{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+.header{
+    margin: 50px 75px;
+    margin-bottom: 0;
+    .label{
+       @include font;
+        color: #363636;
+        margin: 0 0 10px 0;
+    }
+    .result{
+        @include font;
+        color: #363636;
+        margin: 40px 0 0 0;
+    }
+    hr{
+        width: 100%;
+        border:none;
+        border-top: 1px solid #EAEAEA;
+        margin: 0;
+    }
+}
+
+

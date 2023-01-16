@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useContext, useEffect} from 'react';
 import './App.css';
+import {Route, Routes} from "react-router";
+import Homepage from "./pages/Homepage";
+import {Context} from "./index";
+import {observer} from "mobx-react-lite";
+import ArticlePage from "./pages/ArticlePage";
 
 function App() {
+    const {store} = useContext(Context);
+    useEffect(() => {
+        store.GetArticles(6)
+    }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/' element={<Homepage/>}/>
+        <Route path='/article/:id' element={<ArticlePage/>}/>
+      </Routes>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
